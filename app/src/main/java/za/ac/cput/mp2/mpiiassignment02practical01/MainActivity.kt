@@ -8,8 +8,8 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Done
 import androidx.compose.material.icons.filled.Info
+import androidx.compose.material.icons.filled.PlayArrow
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -19,20 +19,23 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import za.ac.cput.mp2.mpiiassignment02practical01.AlertDialog
+import androidx.navigation.NavController
+import androidx.navigation.NavHostController
+import androidx.navigation.compose.rememberNavController
 import za.ac.cput.mp2.mpiiassignment02practical01.ui.theme.MPIIAssignment02Practical01Theme
+import za.ac.cput.mp2.mpiiassignment02practical01.ui.theme.MainNavigationScreen
+import za.ac.cput.mp2.mpiiassignment02practical01.ui.theme.SetupNavigationGraph
 
 class MainActivity : ComponentActivity() {
+  private lateinit var navController: NavHostController
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
             MPIIAssignment02Practical01Theme {
-                GetScaffold()
-                AlertDialog()
-
+              navController= rememberNavController()
+                SetupNavigationGraph(navController = navController)
             }
         }
     }
@@ -59,12 +62,13 @@ fun MainContent(){
         verticalArrangement= Arrangement.Top,
         horizontalAlignment= Alignment.CenterHorizontally
 
-    ){    Box(Modifier
-        .padding(12.dp)
-        .fillMaxWidth()
-        .height(150.dp)
-        .clip(RoundedCornerShape(12.dp))
-        .background(Color(0xFFDDE2FF)),
+    ){    Box(
+        Modifier
+            .padding(12.dp)
+            .fillMaxWidth()
+            .height(150.dp)
+            .clip(RoundedCornerShape(12.dp))
+            .background(Color(0xFFDDE2FF)),
         contentAlignment = Alignment.Center
     ){
         Text(text="Welcome to my Jetpack Compose Journey", fontSize = 19.sp)
@@ -129,3 +133,32 @@ fun AlertDialog(
 
 
         )}}
+@Composable
+fun StartJourneyButton(navController: NavController){
+    Column(
+        modifier = Modifier
+            .fillMaxSize()
+            .padding(vertical = 200.dp),
+        verticalArrangement = Arrangement.Bottom,
+        horizontalAlignment = Alignment.CenterHorizontally
+    )
+    {
+        Button(
+            //Coding to select the screen that the page needs to navigate to
+            onClick = {navController.navigate(route=MainNavigationScreen.Journey.route)},
+            colors = ButtonDefaults.buttonColors(backgroundColor = Color.Black)
+        )
+        {
+            Icon(
+                imageVector = Icons.Filled.PlayArrow,
+                contentDescription = "",
+                tint = Color.White
+            )
+            // Creating a space between the icon and the text of the button
+            Spacer(Modifier.size(ButtonDefaults.IconSpacing))
+            // Text of the button
+            Text(text = "Start Journey", style = TextStyle(Color.White)
+            )
+        }
+    }
+}
