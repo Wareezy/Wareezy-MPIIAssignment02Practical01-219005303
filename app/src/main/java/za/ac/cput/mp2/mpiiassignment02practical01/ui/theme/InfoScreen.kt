@@ -67,7 +67,7 @@ the background
 fun CourseText() {
     Text(
 
-        text = "My Student Number:219005303",
+        text = "Course:Application Development",
 
 
         style = TextStyle(Color.Black),
@@ -104,7 +104,7 @@ fun DepartmentText() {
 @Composable
 fun StudentNumberText() {
     Text(
-        text = "Course:Application Development",
+        text = "Student Number: 219005303",
 
         style = TextStyle(Color.Black),
         modifier = Modifier
