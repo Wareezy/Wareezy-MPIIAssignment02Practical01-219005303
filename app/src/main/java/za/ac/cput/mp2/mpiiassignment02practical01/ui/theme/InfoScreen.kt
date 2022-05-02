@@ -27,7 +27,7 @@ fun GetScaffold2(){
         topBar = {
             TopAppBar(
             title = {Text(
-                "MPIIAssignment02Practical02",
+                "MPIIAssignment03Practical02",
                 color = Color.White)},
             backgroundColor = Color(0xFF000000)) },
         content = { },
