@@ -125,9 +125,10 @@ fun StudentNumberText() {
 
 
         )
+
 }
 @Composable
-fun CourseButton(){
+fun CourseButton(navController: NavController){
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -140,7 +141,7 @@ fun CourseButton(){
     )
     {
         Button(
-            onClick = {},
+            onClick = {navController.navigate(route=MainNavigationScreen.Module.route)},
             colors = ButtonDefaults.buttonColors(backgroundColor = Color.Black)
         )
         {

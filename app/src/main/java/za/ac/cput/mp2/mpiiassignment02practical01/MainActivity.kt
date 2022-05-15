@@ -63,6 +63,7 @@ fun MainContent(){
         horizontalAlignment= Alignment.CenterHorizontally
 
     ){    Box(
+
         Modifier
             .padding(12.dp)
             .fillMaxWidth()

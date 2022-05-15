@@ -12,9 +12,10 @@ import za.ac.cput.mp2.mpiiassignment02practical01.StartJourneyButton
 @Composable
 fun SetupNavigationGraph(
     navController:NavHostController
-){
-    NavHost(navController = navController,
-    startDestination = MainNavigationScreen.Home.route){
+)
+{
+    NavHost(navController = navController, startDestination = MainNavigationScreen.Home.route)
+    {
         composable(MainNavigationScreen.Home.route){
 
             MainContent()
@@ -22,14 +23,20 @@ fun SetupNavigationGraph(
             AlertDialog()
             StartJourneyButton(navController = navController)
         }
+
         composable(MainNavigationScreen.Journey.route){
             za.ac.cput.mp2.mpiiassignment02practical01.ui.theme.GetScaffold2()
             FullNameText()
             StudentNumberText()
             CourseText()
             DepartmentText()
-            CourseButton()
+            CourseButton(navController = navController)
             BackButton(navController = navController)
+        }
+        composable(MainNavigationScreen.Module.route)
+        {
+
+         VerticalScroll(navController = navController)
         }
 
     }

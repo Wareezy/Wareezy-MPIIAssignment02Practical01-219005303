@@ -4,5 +4,6 @@ sealed class MainNavigationScreen(val route:String)
 {
     object Home: MainNavigationScreen(route="welcome_screen")
     object Journey: MainNavigationScreen(route= "journey_screen")
+    object Module:MainNavigationScreen(route="module_screen")
 }
 
